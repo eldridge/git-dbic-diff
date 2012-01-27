@@ -182,7 +182,6 @@ $new->translate("$scratch/$file-NEW-$db.sql");
 
 $old->schema->name($source);
 $new->schema->name($target || 'index');
-
 my $opts =
 {
 	caseopt						=> 0,
@@ -206,8 +205,8 @@ print $diff;
 
 sub write_sql_to_directory {
   my $dir = shift;
-  my $time = strftime "%Y-%a-%b-%H%M%S", localtime;
-  my $file = join "/", $dir,$time;
+  $target ||= 'index';
+  my $file = "$dir/$source-$target"; 
   $file .= ".sql";
   print "Writing SQL to $file...\n";
   open my $fh, ">", $file 
