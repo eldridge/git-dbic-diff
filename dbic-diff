@@ -57,6 +57,7 @@ use SQL::Translator;
 use SQL::Translator::Diff;
 use SQL::Translator::Schema::Constants;
 use Getopt::Attribute;
+use POSIX qw(strftime);
 
 our $db : Getopt(db=s MySQL);
 our $write_to_dir : Getopt(write=s);
@@ -205,8 +206,9 @@ print $diff;
 
 sub write_sql_to_directory {
   my $dir = shift;
-  my $time = localtime;
-  my $file = "$dir/$time.sql";
+  my $time = strftime "%Y-%a-%b-%H%M%S", localtime;
+  my $file = join "/", $dir,$time;
+  $file .= ".sql";
   print "Writing SQL to $file...\n";
   open my $fh, ">", $file 
     || die "Can't open $file: $!";
