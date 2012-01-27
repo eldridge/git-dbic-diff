@@ -46,6 +46,12 @@ Mike Eldridge <diz@cpan.org>
 
 =cut
 
+=head1 CONTRIBUTORS
+
+Devin Austin <dhoss@cpan.org>
+
+=cut
+
 use Directory::Scratch;
 use SQL::Translator;
 use SQL::Translator::Diff;
