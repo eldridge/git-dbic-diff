@@ -59,7 +59,7 @@ use SQL::Translator::Schema::Constants;
 use Getopt::Attribute;
 use POSIX qw(strftime);
 
-our $db : Getopt(db=s MySQL);
+our $db : Getopt(db=s SQLite);
 our $write_to_dir : Getopt(write=s);
 
 
